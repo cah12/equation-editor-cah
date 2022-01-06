@@ -1,6 +1,6 @@
 {
   "name": "equation-editor-cah",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Provides a modal dialog for editing math functions.",
   "main": "js/editor.min.js",
   "scripts": {
