@@ -76,7 +76,6 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
         }            
     });
 
-
 <br>
 
 ## Configuring the editor
