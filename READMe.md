@@ -22,8 +22,7 @@ or use the CDN
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.0/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.0/css/editor.min.css" />
+    <script src="https://unpkg.com/equation-editor-cah@1.0.10/js/editor.min.js"></script>    
 
 or download equationEditor from GitHub, https://github.com/cah12/equation-editor-cah, and add the necessary files to your project.
 
@@ -32,7 +31,8 @@ or download equationEditor from GitHub, https://github.com/cah12/equation-editor
 ## How to use
 
     //Create an equation editor that is triggered when a clickable html element with id 'test' is clicked.
-    new EquationEditor("test");
+    const editor = new EquationEditor("test");
+    editor.edit();
     
     const options = {
         hideAlphas: true,
@@ -45,7 +45,8 @@ or download equationEditor from GitHub, https://github.com/cah12/equation-editor
         bigDialog: true
     }
     //Create a second equation editor that is triggered when a clickable html element with id 'test2' is clicked.
-    new EquationEditor("test2", options);
+    const editor_2 = new EquationEditor("test2", options);
+    editor_2.edit();
 
     //Note: Your app can create as many editorrs as necessary.
 
@@ -67,7 +68,7 @@ or download equationEditor from GitHub, https://github.com/cah12/equation-editor
 <br>
 
 ## Configuring the editor
-EquationEditor has no public methods. You configure it during instantiation by passing an options object as the second argument in the constructor. Possible options are shown in the table below.
+You configure it during instantiation by passing an options object as the second argument in the constructor. Possible options are shown in the table below.
 
 |   Option                  | Description                                           | Default           |
 |   ----------              | ----------    | ------            |
@@ -88,13 +89,17 @@ EquationEditor has no public methods. You configure it during instantiation by p
 <br>
 
 ## Under the hood
-The EquationEditor depends on MathJax, MathJs and Bootstrap and dynamically adds the CDNs, https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js, https://unpkg.com/mathjs@10.0.0/lib/browser/math.js, https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css and https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js to the head section. If you wish to add any of these dependencies yourself, call the appropriate static method shown below before creating any instance of EquationEditor.
+The EquationEditor depends on MathJax, MathJs and Bootstrap and dynamically adds the CDNs, https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js, https://unpkg.com/mathjs@10.0.0/lib/browser/math.js, https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css and https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js to the head section. If you wish to add any of these dependencies yourself, call the appropriate method shown below before calling edit().
 
-    EquationEditor.noMathJax(); //Prevent dynamic loading of MathJax
-    EquationEditor.noMathJs(); //Prevent dynamic loading of MathJs
-    EquationEditor.noMathBootstrap(); //Prevent dynamic loading of Bootstrap js and css
+    const editor = new EquationEditor("test");
+    editor.noMathJax(); //Prevent dynamic loading of MathJax
+    editor.noMathJs(); //Prevent dynamic loading of MathJs
+    editor.noBootstrap(); //Prevent dynamic loading of Bootstrap js and css
 
-If a dependency is not found, the editor will issue a warning to the console.
+    //You can chain...
+    editor.noMathJax().noMathJs().noBootstrap();
+
+If a dependency is not found or edit() is not called, the editor will issue a warning to the console.
 
 <br>
 
