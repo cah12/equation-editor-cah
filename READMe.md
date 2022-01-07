@@ -14,7 +14,7 @@ A configured Equation Editor (see configuration options below)
 
 ## Installation
 
-`npm install equation-editor-cah`
+    npm install equation-editor-cah
 
 or use the CDN
     
@@ -37,13 +37,32 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.15/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.15/css/editor.min.css">  
+    <script src="https://unpkg.com/equation-editor-cah@1.0.17/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.17/css/editor.min.css">  
 
 <br>
 
 ## How to use
 
+In your html file.
+
+    /*index.html*/
+
+    ...
+    <body>
+        ...
+        <!-- Trigger the editor with a button -->
+        <button type="button" id="test">Open Modal</button>
+        <button type="button" id="test2">Open Modal2</button>
+        ...
+        <script src="test.js"></script>
+        ...
+    </body>
+
+In your js file.
+
+    /*test.js*/
+    ...
     //Create an equation editor that is triggered when a clickable html element with id 'test' is clicked.
     new EquationEditor("test");
     
@@ -75,6 +94,8 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
             console.log("fn:" + editedEquation, idOfTriggerElement); //fn:sqrt(45)+(5x-y)2x^2 test2
         }            
     });
+
+    ...
 
 <br>
 
