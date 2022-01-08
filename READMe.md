@@ -1,3 +1,8 @@
+# EquatoionEditor - A point-and-click math funtion editor
+
+File: [Link to demo](https://unpkg.com/equation-editor-cah/index.html) (click for a live demo)
+
+
 ## Screenshots
 
 The default Equation Editor
@@ -19,8 +24,8 @@ A configured Equation Editor (see configuration options below)
 or use the CDN
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.13/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.13/css/editor.min.css">    
+    <script src="https://unpkg.com/equation-editor-cah@1.0.17/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.17/css/editor.min.css">    
 
 or download equationEditor from GitHub, https://github.com/cah12/equation-editor-cah, and add the necessary files to your project.
 
