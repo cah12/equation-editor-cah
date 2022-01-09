@@ -24,8 +24,8 @@ A configured Equation Editor (see configuration options below)
 or use the CDN
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.17/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.17/css/editor.min.css">    
+    <script src="https://unpkg.com/equation-editor-cah@1.0.19/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.19/css/editor.min.css">    
 
 or download equationEditor from GitHub, https://github.com/cah12/equation-editor-cah, and add the necessary files to your project.
 
@@ -42,35 +42,67 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.17/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.17/css/editor.min.css">  
+    <script src="https://unpkg.com/equation-editor-cah@1.0.19/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.19/css/editor.min.css">  
 
 <br>
 
 ## How to use
 
+### Browser example
+
+Assuming a folder structure as:
+
+    index.html
+    js
+        test.js
+
 In your html file.
 
     /*index.html*/
 
-    ...
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Equation Editor - Browser</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <script src="https://unpkg.com/mathjs@10.0.0/lib/browser/math.js"></script>
+
+        <!--Uncomment the line below for old browsers-->
+        <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+        <script src="https://unpkg.com/equation-editor-cah@1.0.19/js/editor.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.19/css/editor.min.css">
+    </head>
+
     <body>
-        ...
-        <!-- Trigger the editor with a button -->
-        <button type="button" id="test">Open Modal</button>
-        <button type="button" id="test2">Open Modal2</button>
-        ...
-        <script src="test.js"></script>
-        ...
+        <div><button id="test">Test</button> <button id="test2">Test 2</button></div>
+        <div> AsciiMath Output (Test) : <input id="output" type="text" readOnly=true placeholder="Edited output - Test" />
+        </div>
+        <div> AsciiMath Output (Test 2) : <input id="output2" type="text" readOnly=true
+                placeholder="Edited output - Test 2" /></div>
+        <script src="js/test.js"></script>
     </body>
+
+    </html>
 
 In your js file.
 
     /*test.js*/
-    ...
-    //Create an equation editor that is triggered when a clickable html element with id 'test' is clicked.
-    new EquationEditor("test");
-    
+    //Create an equation editor that will be trigger when a clickable html element with id 'test' is clicked.
+    const ed = new EquationEditor("test");
+
     const options = {
         hideAlphas: true,
         title: 'Function Editor',
@@ -79,28 +111,117 @@ In your js file.
         prettyOnly: true,
         initializeWithLastValue: true,
         validOnly: true,
-        bigDialog: true
+        bigDialog: true,
+        //parenthesis: "keep",
+        //implicit: "show",
+        //simplifyOutput: true,
+        //operatorButtonTextColor: "red"
+        //buttonImages: {xSquareImg: "img/xSquare3.png"}
+        buttonImages: { xSquareImg: "Sqr", squareRootImg: "Sqrt", xToPowYImg: "x^y" }
     }
-    //Create a second equation editor that is triggered when a clickable html element with id 'test2' is clicked.
+
+    //Create a second equation editor that will be trigger when a clickable html element with id 'test2' is clicked.
     new EquationEditor("test2", options);
-    
+
     //Note: Your app can create as many editorrs as necessary.
 
     //Listen for when 'test' editor has something.
     $(window).on("equationEdited", function (e, editedEquation, idOfTriggerElement) {
-        if(idOfTriggerElement == 'test'){
-            console.log("fn:" + editedEquation, idOfTriggerElement); //e.g. fn:sqrt(45)+(5x-y)2x^2 test
-        } 
+        if (idOfTriggerElement == 'test') {
+            $("#output").val(editedEquation);          
+        }
     });
 
     //Listen for when 'test2' editor has something.
     $(window).on("equationEdited", function (e, editedEquation, idOfTriggerElement) {
-        if(idOfTriggerElement == 'test2'){
-            console.log("fn:" + editedEquation, idOfTriggerElement); //fn:sqrt(45)+(5x-y)2x^2 test2
-        }            
+        if (idOfTriggerElement == 'test2') {
+            $("#output2").val(editedEquation);        
+        }
     });
 
-    ...
+<br>
+
+### Nodejs example
+
+    npm init -y
+    npm i bootstrap jquery mathjax@3 mathjs equation-editor-cah --save
+
+
+Assuming a folder structure as:
+
+    app.js
+    test.js
+    package.json
+    package-lock.json
+    views
+        index.html
+
+In your html file.
+
+    /*index.html*/
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Node Example1</title>
+
+        <script src="./jquery.min.js"></script>
+
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <script src="./bootstrap.min.js"></script>
+
+        <script src="./math.js"></script>
+
+        <!--Uncomment the line below for old browsers-->
+        <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+
+        <script src="./tex-svg.js"></script>
+
+        <script src="./editor.min.js"></script>
+        <link rel="stylesheet" href="./editor.min.css">   
+
+    </head>
+
+    <body>
+        <div><button id="test">Test</button> <button id="test2">Test 2</button></div>
+        <div> AsciiMath Output (Test) : <input id="output" type="text" readOnly=true placeholder="Edited output - Test" />
+        </div>
+        <div> AsciiMath Output (Test 2) : <input id="output2" type="text" readOnly=true
+                placeholder="Edited output - Test 2" /></div>
+        <script src="./test.js"></script>
+    </body>
+
+    </html>
+
+In your js file. (Note: test.js is the same as above.)
+
+    /*app.js*/
+
+    const express = require("express");
+    const path = require('path');
+
+    const app = express();
+
+    app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+    app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
+    app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+    app.use(express.static(path.join(__dirname, 'node_modules/mathjax/es5')))
+    app.use(express.static(path.join(__dirname, 'node_modules/mathjs/lib/browser')))
+    app.use(express.static(path.join(__dirname, 'node_modules/equation-editor-cah/js')))
+    app.use(express.static(path.join(__dirname, 'node_modules/equation-editor-cah/css')))
+    app.use(express.static(__dirname));
+
+    app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/index.html'))
+    });
+
+    app.listen(5000, () => {
+    console.log('Listening on port ' + 5000);
+    });
 
 <br>
 
