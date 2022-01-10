@@ -24,8 +24,8 @@ A configured Equation Editor (see configuration options below)
 or use the CDN
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.21/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.21/css/editor.min.css">    
+    <script src="https://unpkg.com/equation-editor-cah@1.1.0/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.0/css/editor.min.css">    
 
 or download equationEditor from GitHub, https://github.com/cah12/equation-editor-cah, and add the necessary files to your project.
 
@@ -42,8 +42,8 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.0.21/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.21/css/editor.min.css">  
+    <script src="https://unpkg.com/equation-editor-cah@1.1.0/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.0/css/editor.min.css">  
 
 <br>
 
@@ -82,8 +82,8 @@ In your html file.
 
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-        <script src="https://unpkg.com/equation-editor-cah@1.0.21/js/editor.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.0.21/css/editor.min.css">
+        <script src="https://unpkg.com/equation-editor-cah@1.1.0/js/editor.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.0/css/editor.min.css">
     </head>
 
     <body>
@@ -239,6 +239,7 @@ The EquationEditor has no public methods. You configure it during instantiation 
 |   initializeWithLastValue | If true, initialize the editor with the last edited entry              | false             |
 |   validOnly               |  If true, the enter button is only enabled if the entry is mathematically valid. Validity is tested by math.js parse method. Thus, for example, math.parse('48 *') is invalid and math.parse('48 * 5 \* y') is valid             | false             |
 |   bigDialog               |  If true, the big dialog is displayed             | false             | 
+|   degreeRadianMode        |  Sets the editor mode. There are two options available:<br>&nbsp;&nbsp;&nbsp;&nbsp;`'degree'`  All angles are in degrees.<br>&nbsp;&nbsp;&nbsp;&nbsp;`'radian'` All angles are in radians.<br>If degreeRadianMode is not specified (i.e. left undefined), the editor displays a button that allows toggling between the degree and radian mode.  |   undefined |
 |   simplifyOutput          |  If true, the output is simplified using Mathjs's simpified method. If the input is 4^2x^2, for example, the simpifed output is 16 x ^ 2  | false |
 |   parenthesis             | This option changes the way parentheses are used in the output. There are three options available:<br>&nbsp;&nbsp;&nbsp;&nbsp;`'keep'`  Keep the parentheses from the input and display them as is.<br>&nbsp;&nbsp;&nbsp;&nbsp;`'auto'` Only display parentheses that are necessary. Mathjs tries to get rid of as much parentheses as possible.<br>&nbsp;&nbsp;&nbsp;&nbsp;`'all'` Display all parentheses that are given by the structure of the node tree. This makes the output precedence unambiguous.    |   'auto'    |
 |   implicit                |   You can change the way that implicit multiplication is converted to LaTeX. The two options are `'hide'`, to not show a multiplication operator for implicit multiplication and `'show'` to show it.<br><i>Note: Inputs are converted to LaTeX as part of the processing.</i>   | 'hide'    |
