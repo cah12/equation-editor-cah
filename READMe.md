@@ -23,8 +23,8 @@ A configured Equation Editor (see configuration options below)
 or use the CDN
 
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.1.4/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.4/css/editor.min.css">
+    <script src="https://unpkg.com/equation-editor-cah@1.1.5/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.5/css/editor.min.css">
 
 or download equationEditor from GitHub, https://github.com/cah12/equation-editor-cah, and add the necessary files to your project.
 
@@ -41,8 +41,8 @@ The EquationEditor depends on JQuery, MathJax, MathJs and Bootstrap. You could u
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
     <!-- The version may change during maintenance. Be sure to use the highest available version. -->
-    <script src="https://unpkg.com/equation-editor-cah@1.1.4/js/editor.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.4/css/editor.min.css">
+    <script src="https://unpkg.com/equation-editor-cah@1.1.5/js/editor.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.5/css/editor.min.css">
 
 <br>
 
@@ -81,8 +81,8 @@ In your html file.
 
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-        <script src="https://unpkg.com/equation-editor-cah@1.1.4/js/editor.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.4/css/editor.min.css">
+        <script src="https://unpkg.com/equation-editor-cah@1.1.5/js/editor.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/equation-editor-cah@1.1.5/css/editor.min.css">
     </head>
 
     <body>
